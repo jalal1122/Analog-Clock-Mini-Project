@@ -1,0 +1,344 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --second-hand: #3b3bbf;
+  --out-shadow: #2c2c34;
+  --in-shadow: #1a1a1a81;
+  --body-background: #25252d;
+  --other-hands: #ececf3;
+  --markings: #bdbdcc;
+}
+
+.bright-mode {
+  --body-background: #ececf3;
+  --other-hands: #25252d;
+  --second-hand: #3b3bbf;
+  --markings: #bdbdcc;
+  --in-shadow: #1a1a1a81;
+  --out-shadow: #f6f6fa;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--body-background);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  height: 100vh;
+}
+
+.container {
+  width: 500px;
+  height: 500px;
+  margin-top: 100px;
+  border-radius: 50%;
+  border: var(--out-shadow) 3px solid;
+  box-shadow: inset 10px 10px 10px var(--out-shadow),
+    10px 10px 10px var(--out-shadow);
+  position: relative;
+}
+
+.inside-container {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: var(--out-shadow) 3px solid;
+  box-shadow: inset -10px -10px 10px var(--in-shadow),
+    -10px -10px 10px var(--in-shadow);
+}
+
+.markings {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  top: 50px;
+  left: 50px;
+  border-radius: 50%;
+  z-index: -11;
+}
+
+.marking {
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: var(--markings);
+}
+
+.marking-1 {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.marking-2 {
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+}
+
+.marking-3 {
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+}
+
+.marking-4 {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.center-dot {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background-color: var(--second-hand);
+  border: var(--body-background) 4px solid;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.second-hand {
+  position: absolute;
+  width: 5px;
+  height: 200px;
+  background-color: var(--second-hand);
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%);
+  z-index: -10;
+}
+
+.second-hand::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: var(--second-hand);
+  bottom: -20px;
+  z-index: -11;
+}
+
+.minute-hand {
+  position: absolute;
+  width: 5px;
+  height: 150px;
+  background-color: var(--other-hands);
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(40deg);
+}
+
+.minute-hand::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: var(--other-hands);
+  bottom: -20px;
+  z-index: -11;
+}
+
+.hour-hand {
+  position: absolute;
+  width: 5px;
+  height: 100px;
+  background-color: var(--other-hands);
+  top: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translate(-50%, -100%) rotate(90deg);
+}
+
+.hour-hand::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 50px;
+  background-color: var(--other-hands);
+  bottom: -20px;
+  z-index: -11;
+}
+
+/* toogle Mode CSs */
+
+.toggle-button {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  width: 60px;
+  border: var(--body-background) 2px solid;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  box-shadow: inset 5px 5px 10px var(--in-shadow),
+    -5px -5px 10px var(--out-shadow);
+}
+
+.toggle-button svg {
+  fill: var(--second-hand);
+}
+
+.digital-clock {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--second-hand);
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.time {
+  font-size: 80px;
+  font-weight: 600;
+  color: var(--other-hands);
+  margin-top: 20px;
+}
+
+.date {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--markings);
+}
+
+.ampm {
+  position: absolute;
+  top: 20px;
+  right: -60px;
+  color: var(--other-hands);
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 220px;
+    height: 220px;
+    margin-top: 20px;
+  }
+  .inside-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .markings {
+    width: 80%;
+    height: 80%;
+    top: 20px;
+    left: 20px;
+  }
+
+  .marking {
+    width: 3px;
+    height: 30px;
+  }
+
+  .marking-1 {
+    top: -10px;
+  }
+
+  .marking-2 {
+    width: 30px;
+    height: 3px;
+    top: 50%;
+    left: -10px;
+  }
+
+  .marking-3 {
+    width: 30px;
+    height: 3px;
+    top: 50%;
+    right: -10px;
+  }
+
+  .marking-4 {
+    bottom: -10px;
+  }
+
+  .center-dot {
+    width: 12px;
+    height: 12px;
+    border-width: 3px;
+  }
+
+  .second-hand {
+    width: 3px;
+    height: 90px;
+  }
+
+  .second-hand::after {
+    width: 3px;
+    height: 10px;
+    bottom: -15px;
+  }
+  .minute-hand {
+    width: 3px;
+    height: 70px;
+  }
+
+  .minute-hand::after {
+    width: 3px;
+    height: 10px;
+    bottom: -15px;
+  }
+
+  .hour-hand {
+    width: 3px;
+    height: 50px;
+  }
+
+  .hour-hand::after {
+    width: 3px;
+    height: 10px;
+    bottom: -15px;
+  }
+
+  .toggle-button {
+    width: 40px;
+    padding: 2px;
+    top: 20px;
+    right: 10px;
+  }
+
+  .digital-clock {
+    font-size: 20px;
+    gap: 2px;
+  }
+
+  .time {
+    font-size: 40px;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+
+  .ampm {
+    top: 10px;
+    right: -30px;
+  }
+}
